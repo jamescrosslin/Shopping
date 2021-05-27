@@ -1,8 +1,8 @@
 function mainfunction() {
-  var itemChoose = document.getElementById('itemChoose');
-  var itemType = document.getElementById('itemType');
+  let itemChosen = document.getElementById('itemChoose');
+  let itemType = document.getElementById('itemType');
   itemType.addEventListener('change', selectItem);
-  itemChoose.addEventListener('click', function () {
+  itemChosen.addEventListener('click', function () {
     if (itemType.value === 'DefaultType') {
       alert('Please choose the type of item you want to buy before choosing the item!');
       itemType.focus();
@@ -10,143 +10,44 @@ function mainfunction() {
   });
 }
 function selectItem() {
-  var itemType = document.getElementById('itemType');
-  var itemChoose = document.getElementById('itemChoose');
-
+  let itemType = document.getElementById('itemType');
+  let itemChosen = document.getElementById('itemChoose');
+  let items, name; //varaibles for the name of the category and the items
+  itemChosen.innerHTML = ""; // Empty the options
   if (itemType.value === 'f') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var foodItems = [
-      'Hamburger',
-      'Pizza',
-      'Coffee',
-      'Chicken Nuggets',
-      'Bread',
-      'Tea',
-      'Soda',
-      'Cake',
-      'Ice Cream',
-    ];
-    for (i = 0; i < foodItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'food' + i);
-      var optiontxt = document.createTextNode(foodItems[i]);
-      option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+    items = ['Hamburger','Pizza','Coffee','Chicken Nuggets','Bread','Tea','Soda','Cake','Ice Cream'];
+    name = 'food';
   }
   if (itemType.value === 'cl') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var clothesItems = [
-      'T-Shirt',
-      'Coat',
-      'Sweater',
-      'Jacket',
-      'Shorts',
-      'Jeans',
-      'Trousers',
-      'Shoes',
-      'Socks',
-    ];
-    for (i = 0; i < clothesItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'clothes' + i);
-      var optiontxt = document.createTextNode(clothesItems[i]);
-      option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+    items = ['T-Shirt','Coat','Sweater','Jacket','Shorts','Jeans','Trousers','Shoes','Socks'];
+    name = 'clothes';
   }
   if (itemType.value === 'tch') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var techItems = [
-      'Desktop PC',
-      'Laptop',
-      'Processor',
-      'Graphic Card',
-      'Ram',
-      'iPhone',
-      'Samsung',
-      'Television',
-      'Radio',
-      'Speakers',
-    ];
-    for (i = 0; i < techItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'clothes' + i);
-      var optiontxt = document.createTextNode(techItems[i]);
-      option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+    items = ['Desktop PC','Laptop','Processor','Graphic Card','Ram','iPhone','Samsung','Television','Radio','Speakers'];
+    name = 'tech';
   }
   if (itemType.value === 'c') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var carsItems = [
-      'Audi',
-      'BMW',
-      'Volkswagen',
-      'Mercedes',
-      'Porsche',
-      'Ferrari',
-      'Lamborghini',
-      'Bugatti',
-    ];
-    for (i = 0; i < carsItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'clothes' + i);
-      var optiontxt = document.createTextNode(carsItems[i]);
-      option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+    items = ['Audi','BMW','Volkswagen','Mercedes','Porsche','Ferrari','Lamborghini','Bugatti'];
+    name = 'cars';
   }
   if (itemType.value === 'l') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var libraryItems = [
-      'Book',
-      'Notebook',
-      'Magazine',
-      'Pencil',
-      'Pen',
-      'Rubber',
-      'Ruler',
-      'Colour Pen',
-    ];
-    for (i = 0; i < libraryItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'clothes' + i);
-      var optiontxt = document.createTextNode(libraryItems[i]);
-      option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+    items = ['Book','Notebook','Magazine','Pencil','Pen','Rubber','Ruler','Colour Pen'];
+    name = "library"
   }
   if (itemType.value === 'o') {
-    while (itemChoose.length > 1) {
-      itemChoose.removeChild(itemChoose.lastChild);
-    }
-    var otherItems = [
-      'Lawn Mower',
-      'Ball',
-      'Tennis Racket',
-      'Shovel',
-      'Vase',
-      'Couch',
-      'Chair',
-      'Blanket',
-    ];
-    for (i = 0; i < otherItems.length; i++) {
-      var option = document.createElement('option');
-      option.setAttribute('value', 'clothes' + i);
-      var optiontxt = document.createTextNode(otherItems[i]);
+    items = ['Lawn Mower','Ball','Tennis Racket','Shovel','Vase','Couch','Chair','Blanket'];
+    name = 'others';
+  }
+  if (itemType.value === "DefaultType") {
+    items = ['Here you can choose the item you want!'];
+    name = 'DefaultType';
+
+  }
+  for (i = 0; i < items.length; i++) {
+      let option = document.createElement('option');
+      option.setAttribute('value', name + i);
+      let optiontxt = document.createTextNode(items[i]);
       option.appendChild(optiontxt);
-      itemChoose.appendChild(option);
-    }
+      itemChosen.appendChild(option);
   }
 }
